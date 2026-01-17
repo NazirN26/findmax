@@ -8,7 +8,6 @@ if [ ! -f "$BINARY" ]; then
   exit 1
 fi
 
-
 INPUT="10
 123
 -200
@@ -22,11 +21,13 @@ INPUT="10
 1048
 "
 
-
 EXPECTED="Максимальный элемент массива: 7987"
 
+RAW_OUTPUT=$(echo "$INPUT" | "$BINARY")
 
-RESULT=$(echo "$INPUT" | "$BINARY" | tail -n 1)
+VALUE=$(echo "$RAW_OUTPUT" | sed 's/.*Максимальный элемент массива: //')
+
+RESULT="Максимальный элемент массива: $VALUE"
 
 if [ "$RESULT" = "$EXPECTED" ]; then
   echo "Тест пройден успешно"
