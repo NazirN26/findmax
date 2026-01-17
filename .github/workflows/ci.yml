@@ -34,7 +34,7 @@ jobs:
       - name: Build deb package
         run: |
           set -eux
-          dpkg-deb --build . poapr.deb
+          dpkg-deb --build . findmax.deb
           mkdir -p artifacts
           mv findmax.deb artifacts/
 
