@@ -8,7 +8,7 @@ if [ ! -f "$BINARY" ]; then
   exit 1
 fi
 
-# Тестовый ввод
+
 INPUT="10
 123
 -200
@@ -22,13 +22,11 @@ INPUT="10
 1048
 "
 
-# Ожидаемый результат
+
 EXPECTED="Максимальный элемент массива: 7987"
 
-# Запуск программы
-RESULT=$(echo "$INPUT" | "$BINARY" \
-  | sed '/Введите размер массива/d' \
-  | sed '/Введите элемент массива/d')
+
+RESULT=$(echo "$INPUT" | "$BINARY" | tail -n 1)
 
 if [ "$RESULT" = "$EXPECTED" ]; then
   echo "Тест пройден успешно"
